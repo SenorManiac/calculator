@@ -5,31 +5,54 @@
     <meta name="viewport" content="width=, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Micro+5&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <title>Calcy!!</title>
 </head>
 <body>
     <div class="container">
         <div class="calculator">
-            <div id="display" class="display">0</div>
+            <div id="display" class="display">0123456789</div>
+            <p>Odin Instruments</p>
+            <div class="solar">
+                <div class="solar-box"></div>
+                <div class="solar-box"></div>
+                <div class="solar-box"></div>
+                <div class="solar-box"></div>
+                <div class="Model">OI-108</div>
+            </div>
             
-            <div class="buttons">
-                <button id="clear" class="button">AC</button>
-                <button id="add" class="button">+</button>
-                <button id="subtract" class="button">-</button>
-                <button id="multiply" class="button">*</button>
-                <button id="divide" class="button">/</button>
-                <button id="seven" class="button">7</button>
-                <button id="eight" class="button">8</button>
-                <button id="nine" class="button">9</button>
-                <button id="four" class="button">4</button>
-                <button id="five" class="button">5</button>
-                <button id="six" class="button">6</button>
-                <button id="one" class="button">1</button>
-                <button id="two" class="button">2</button>
-                <button id="three" class="button">3</button>
-                <button id="zero" class="button">0</button>
-                <button id="decimal" class="button">.</button>
-                <button id="equals" class="button">=</button>
+            <div class="buttons">    
+                <div class="red_functions">
+                    </div>               
+                <div class="numbers">
+                    <button id="plus-minus" class="button function_buttons">+/-</button>
+                    <button id="square-root" class="button function_buttons">√</button>
+                    <button id="percentage" class="button function_buttons">%</button>
+                    <button id="mrc" class="button function_buttons">MRC</button>
+                    <button id="m-minus" class="button function_buttons">M-</button>
+                    <button id="m-plus" class="button function_buttons">M+</button>
+                    <button id="seven" class="button">7</button>
+                    <button id="eight" class="button">8</button>
+                    <button id="nine" class="button">9</button>
+                    <button id="four" class="button">4</button>
+                    <button id="five" class="button">5</button>
+                    <button id="six" class="button">6</button>
+                    <button id="one" class="button">1</button>
+                    <button id="two" class="button">2</button>
+                    <button id="three" class="button">3</button>
+                    <button id="clear" class="button function_buttons">ON/C</button>
+                    <button id="zero" class="button">0</button>
+                    <button id="decimal" class="button">.</button>
+                    
+                </div>
+                <div class="functions">
+                    <button id="divide" class="button function_buttons">/</button>
+                    <button id="multiply" class="button function_buttons">x</button>
+                    <button id="subtract" class="button function_buttons">-</button>
+                    <button id="add" class="button function_buttons">+</button>                                
+                    <button id="equals" class="button function_buttons">=</button>
+                </div>                                 
             </div>
         </div>
     </div>

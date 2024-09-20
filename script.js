@@ -20,7 +20,7 @@ functionids.forEach(id => {
     fbuttons[id] = document.getElementById(id);
 });
 
-let firstNumber = "0";
+let firstNumber ;
 let secondNumber;
 let answer;
 let operator;
@@ -32,7 +32,7 @@ numberids.forEach(id => {
     nbuttons[id] = document.getElementById(id);
     nbuttons[id].onclick = () => {
         const value = nbuttons[id].innerText || nbuttons[id].value;
-        if (firstNumber === "0") {
+        if (firstNumber === undefined) {
             firstNumber = value; // Assign the button's value to firstNumber
         } else if (firstNumber === answer) {
             firstNumber = value; // Assign the button's value to firstNumber
@@ -79,12 +79,12 @@ function performOperation(num1, num2, operator) {
             result = -num1;
             break;
         case "clear":
-            firstNumber = "0";
+            firstNumber = undefined;
             secondNumber = undefined;
             operator = undefined;
             return "0";
         case "equals":
-            result = num1;
+            result = num2;
             break;
         default:
             result = num1;
@@ -94,40 +94,76 @@ function performOperation(num1, num2, operator) {
 functionids.forEach(id => {
     fbuttons[id] = document.getElementById(id);
     fbuttons[id].onclick = () => {
-        if(id === "clear") {
-            firstNumber = "0";
-            answer = firstNumber;
-            secondNumber = undefined;
-            operator = undefined;
         
+        let flag
+        if(id === "clear") {
+            firstNumber = undefined;
+            answer = 0;
+            secondNumber = undefined;
+            operator = undefined;        
         } else if (secondNumber === undefined) {
             secondNumber = parseFloat(firstNumber);
             answer = secondNumber.toString();
-            firstNumber = "0";
+            firstNumber = undefined;
             operator = id;
-        } else {
+        }else if (secondNumber!== undefined  && firstNumber=== undefined){
+            operator = id;            
+        }
+         else if (secondNumber!== undefined  && firstNumber !== undefined){
             const num1 = parseFloat(secondNumber);
             const num2 = parseFloat(firstNumber);
             const result = performOperation(num1, num2, operator);
             answer = result.toString();
-            firstNumber = '0';
+            firstNumber = undefined;
             secondNumber = answer;
             operator = id;
+            flag = "y"
         }
         if(answer.length > 11) {
             alert('Your answer exceeds the limit we can display');
-            firstNumber = "0";
+            firstNumber = undefined;
             secondNumber = undefined;
             operator = undefined;
             answer = "0";
         }
         if(answer === "Infinity") {
             alert('You cannot divide by zero');
-            firstNumber = "0";
+            firstNumber = undefined;
             secondNumber = undefined;
             operator = undefined;
             answer = "U_R_Wrong";
         }
         display.innerText = answer; 
+        value = undefined;
     };
 });
+
+const solarBoxes = document.querySelectorAll(".solar .solar-box");
+
+solarBoxes.forEach(box => {
+    box.addEventListener("mouseover", () => {
+        box.style.backgroundColor = "black";
+        decreaseOpacity();
+        checkSolarPower();
+    });
+});
+
+function decreaseOpacity() {
+    const currentOpacity = parseFloat(display.style.opacity) || 1;
+    display.style.opacity = (currentOpacity - 0.25).toString();
+}
+
+function checkSolarPower() {
+    const allBlack = Array.from(solarBoxes).every(box => box.style.backgroundColor === "black");
+    if (allBlack) {
+        alert("Calculator has run out of solar power. Wait a second for light to hight the solar panels");
+        setTimeout(resetCalculator, 1000); 
+    }
+}
+
+function resetCalculator() {
+    solarBoxes.forEach(box => {
+        box.style.backgroundColor = "";
+    });
+    display.style.opacity = "1";
+}

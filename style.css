@@ -118,7 +118,7 @@ p{
     margin: 2px;
     margin-top: 4px;
     margin-bottom: 4px;
-    border: 2px outline #000;
+    border: 2px outset #000;
     color: #143980;
     display: flex;
     align-items: flex-start;
@@ -130,7 +130,7 @@ p{
     background-color: rgba(212, 34, 34, 0.938);
     color: white !important;
     font-weight: 700;
-    border: 2px outline #000;
+    border: 2px outset #000;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;

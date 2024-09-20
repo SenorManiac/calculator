@@ -156,7 +156,7 @@ function decreaseOpacity() {
 function checkSolarPower() {
     const allBlack = Array.from(solarBoxes).every(box => box.style.backgroundColor === "black");
     if (allBlack) {
-        alert("Calculator has run out of solar power. Wait a second for light to hight the solar panels");
+        alert("Calculator has run out of solar power. Wait a second for light to hit the solar panels");
         setTimeout(resetCalculator, 1000); 
     }
 }

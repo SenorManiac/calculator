@@ -112,20 +112,36 @@ p{
     height: 108px;
 }
 
-.buttons button {
-    display: flex;
-    align-items: flex-start; /* Align text to the top */
-    justify-content: flex-start; /* Align text to the left */
-    text-align: left; /* Ensure text alignment to the left */
-    line-height: 1; /* Ensure proper alignment */
+.button {
+    height: 50px;
+    width: 65px;
+    margin: 2px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    border: 2px outline #000;
     color: #143980;
-    border: 1px outline black
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
 }
 
-.function_buttons{
+.function_buttons {
     background-color: rgba(212, 34, 34, 0.938);
     color: white !important;
     font-weight: 700;
+    border: 2px outline #000;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
 }
 
-
+.buttons button {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    line-height: 1;
+    color: inherit;
+}

@@ -25,10 +25,8 @@ let secondNumber;
 let answer;
 let operator;
 let memoryValue;
+let memoryValue2;
 
-fbuttons["add"].onclick = () => {
-    // Add functionality here
-};
 
 numberids.forEach(id => {
     nbuttons[id] = document.getElementById(id);
@@ -38,39 +36,61 @@ numberids.forEach(id => {
             firstNumber = value; // Assign the button's value to firstNumber
         } else if (firstNumber === answer) {
             firstNumber = value; // Assign the button's value to firstNumber
+        }else if (firstNumber.length == "10" ) {
+            alert('You have reached the max number limit'); // Assign the button's value to firstNumber
         } else {
-            firstNumber += value; // Concatenate the new value to firstNumber
+            firstNumber += value; 
         }
-        display.innerText = firstNumber; // Update the display
+        display.innerText = firstNumber; 
     };
 });
 
+function formatResult(result) {
+    let resultStr = result.toString();
+    if (resultStr.length > 9) {
+        resultStr = parseFloat(result).toFixed(9);
+        resultStr = resultStr.replace(/\.?0+$/, '');
+    }
+    return resultStr;
+}
+
 function performOperation(num1, num2, operator) {
+    let result;
     switch (operator) {
         case "add":
-            return num1 + num2;
+            result = num1 + num2;
+            break;
         case "subtract":
-            return num1 - num2;
+            result = num1 - num2;
+            break;
         case "multiply":
-            return num1 * num2;
+            result = num1 * num2;
+            break;
         case "divide":
-            return num1 / num2;
+            result = num1 / num2;
+            break;
         case "square-root":
-            return Math.sqrt(num1);
+            result = Math.sqrt(num1);
+            break;
         case "percentage":
-            return num1 / 100;
+            result = num1 / 100;
+            break;
         case "plus-minus":
-            return -num1;
-        case "clear":{
+            result = -num1;
+            break;
+        case "clear":
             firstNumber = "0";
             secondNumber = undefined;
             operator = undefined;
             return "0";
-        }case "equals":
-            return answer;
-    }   
+        case "equals":
+            result = num1;
+            break;
+        default:
+            result = num1;
+    }
+    return formatResult(result);
 }
-
 functionids.forEach(id => {
     fbuttons[id] = document.getElementById(id);
     fbuttons[id].onclick = () => {
@@ -78,7 +98,8 @@ functionids.forEach(id => {
             firstNumber = "0";
             answer = firstNumber;
             secondNumber = undefined;
-            operator = undefined;     
+            operator = undefined;
+        
         } else if (secondNumber === undefined) {
             secondNumber = parseFloat(firstNumber);
             answer = secondNumber.toString();
@@ -89,9 +110,23 @@ functionids.forEach(id => {
             const num2 = parseFloat(firstNumber);
             const result = performOperation(num1, num2, operator);
             answer = result.toString();
-            firstNumber = answer;
+            firstNumber = '0';
+            secondNumber = answer;
+            operator = id;
+        }
+        if(answer.length > 11) {
+            alert('Your answer exceeds the limit we can display');
+            firstNumber = "0";
             secondNumber = undefined;
-            operator = id === "equals" ? undefined : id;
+            operator = undefined;
+            answer = "0";
+        }
+        if(answer === "Infinity") {
+            alert('You cannot divide by zero');
+            firstNumber = "0";
+            secondNumber = undefined;
+            operator = undefined;
+            answer = "U_R_Wrong";
         }
         display.innerText = answer; 
     };

@@ -119,6 +119,7 @@ p{
     text-align: left; /* Ensure text alignment to the left */
     line-height: 1; /* Ensure proper alignment */
     color: #143980;
+    border: 1px outline black
 }
 
 .function_buttons{
@@ -126,3 +127,5 @@ p{
     color: white !important;
     font-weight: 700;
 }
+
+
